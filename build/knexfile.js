@@ -7,13 +7,13 @@ var path_1 = __importDefault(require("path"));
 module.exports = {
     client: 'sqlite3',
     connection: {
-        filename: path_1.default.resolve(__dirname, 'src', 'database', 'database.sqlite'),
+        filename: path_1.default.resolve(__dirname, 'database', 'database.sqlite'),
     },
     migrations: {
-        directory: path_1.default.resolve(__dirname, 'src', 'database', 'migrations'),
+        directory: path_1.default.resolve(__dirname, 'database', 'migrations'),
     },
     seeds: {
-        directory: path_1.default.resolve(__dirname, 'src', 'database', 'seeds'),
+        directory: path_1.default.resolve(__dirname, 'database', 'seeds'),
     },
     userNullAsDefault: true,
 };
