@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "build": "rimraf ./build && tsc",
-    "start": "npm run build && node build/server.js"
+    "knex:migrate": "knex --knexfile knexfile.ts migrate:latest",
+    "start": "node build/server.js"
   },
   "main": "index.js",
   "license": "MIT",
