@@ -1,12 +1,17 @@
 import knex from 'knex';
-import path from 'path';
 
 const connection = knex({
-    client: 'sqlite3',
-    connection: {
-        filename: path.resolve(__dirname, 'database.sqlite'),
-    },
-    useNullAsDefault: true,
+    client: 'pg',
+        debug: true,
+        connection: process.env.DATABASE_URL,
+        pool: {
+          min: 2,
+          max: 10
+        },
+        migrations: {
+          tableName: 'knex_migrations',
+          directory: './src/database/migrations'  // <-- here
+        },
 });
 
 export default connection;

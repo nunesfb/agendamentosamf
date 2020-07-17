@@ -1,15 +1,16 @@
-import path from 'path';
-
 module.exports = {
-    client: 'sqlite3',
-    connection: {
-        filename: path.resolve(__dirname, 'database', 'database.sqlite'),
-    },
-    migrations: {
-        directory: path.resolve(__dirname, 'database', 'migrations'),
-    },
-    seeds: {
-        directory: path.resolve(__dirname, 'database', 'seeds'),
-    },
-    userNullAsDefault: true,
+    production: {
+        client: 'pg',
+        debug: true,
+        connection: process.env.DATABASE_URL,
+        pool: {
+          min: 2,
+          max: 10
+        },
+        migrations: {
+          tableName: 'knex_migrations',
+          directory: './src/database/migrations'  // <-- here
+        },
+        ssl: true
+      }
 };

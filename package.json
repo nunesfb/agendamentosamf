@@ -4,7 +4,7 @@
   "scripts": {
     "build": "rimraf ./build && tsc",
     "knex:migrate": "knex --knexfile src/knexfile.ts migrate:latest",
-    "start": "node build/server.js"
+    "start": "npm run knex:migrate && node build/server.js"
   },
   "main": "index.js",
   "license": "MIT",

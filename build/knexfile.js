@@ -1,19 +1,17 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var path_1 = __importDefault(require("path"));
 module.exports = {
-    client: 'sqlite3',
-    connection: {
-        filename: path_1.default.resolve(__dirname, 'database', 'database.sqlite'),
-    },
-    migrations: {
-        directory: path_1.default.resolve(__dirname, 'database', 'migrations'),
-    },
-    seeds: {
-        directory: path_1.default.resolve(__dirname, 'database', 'seeds'),
-    },
-    userNullAsDefault: true,
+    production: {
+        client: 'pg',
+        debug: true,
+        connection: process.env.DATABASE_URL,
+        pool: {
+            min: 2,
+            max: 10
+        },
+        migrations: {
+            tableName: 'knex_migrations',
+            directory: './src/database/migrations' // <-- here
+        },
+        ssl: true
+    }
 };
