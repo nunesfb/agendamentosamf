@@ -5,16 +5,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var knex_1 = __importDefault(require("knex"));
 var connection = knex_1.default({
-    client: 'pg',
-    debug: true,
-    connection: process.env.DATABASE_URL,
-    pool: {
-        min: 2,
-        max: 10
+    client: 'sqlite3',
+    connection: {
+        filename: './src/database/database.sqlite',
     },
-    migrations: {
-        tableName: 'knex_migrations',
-        directory: './src/database/migrations' // <-- here
-    },
+    useNullAsDefault: true,
 });
 exports.default = connection;
